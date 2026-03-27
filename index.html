@@ -67,9 +67,9 @@
             transition: transform 0.1s linear;
         }
 
-        /* B2B Detail Animation */
-        #b2b-detail-content {
-            transition: all 0.4s ease-out;
+        /* FAQ Animation */
+        .faq-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
 
         /* Table Responsive Styles */
@@ -111,6 +111,7 @@
                 <a href="#b2b" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Layanan B2B</a>
                 <a href="#pricelist" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Daftar Harga</a>
                 <a href="#review" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Review</a>
+                <a href="#faq" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">FAQ</a>
             </nav>
         </div>
         <div class="p-10 bg-slate-50 text-xs font-bold text-slate-400">0823 4224 0701</div>
@@ -118,7 +119,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="relative h-screen w-full overflow-hidden">
-        <img src="https://i.ibb.co.com/nM379Xv0/Gemini-Generated-Image-j0emfwj0emfwj0em.png" alt="Honey Laundry Hero" class="absolute inset-0 w-full h-full object-cover">
+        <img src="https://res.cloudinary.com/dot8xgmrq/image/upload/f_auto,q_auto/Gemini_Generated_Image_j0emfwj0emfwj0em_gfuf1y" alt="Honey Laundry Hero" class="absolute inset-0 w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/10"></div>
         <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
             <a href="https://wa.me/6282342240701" target="_blank" class="bg-pink-500 hover:bg-pink-600 text-white px-10 py-4 rounded-full text-xs font-bold tracking-[0.2em] transition transform hover:scale-110 shadow-2xl uppercase inline-block">
@@ -188,8 +189,7 @@
                     <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Spa</span>
                 </button>
                 <button onclick="showB2B('barber')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
-                    <!-- Fixed Barber Pole Icon -->
-                    <i class="fas fa-barcode text-blue-900 group-hover:text-pink-500 mb-3 text-lg rotate-90"></i>
+                    <i class="fas fa-cut text-blue-900 group-hover:text-pink-500 mb-3 text-lg"></i>
                     <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Barber</span>
                 </button>
                 <button onclick="showB2B('corporate')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
@@ -291,9 +291,49 @@
         <div class="marquee-container" id="review-marquee"></div>
     </section>
 
+    <!-- Section FAQ (Rotating Display) -->
+    <section id="faq" class="py-24 bg-blue-900 text-white relative overflow-hidden">
+        <!-- Decoration -->
+        <div class="absolute top-0 right-0 w-64 h-64 bg-pink-500/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full -ml-32 -mb-32 blur-3xl"></div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-pink-400 text-[10px] uppercase tracking-[0.3em] font-bold">Bantuan & Informasi</span>
+                <h2 class="text-3xl font-bold mt-2">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="bg-blue-950/40 backdrop-blur-md p-10 md:p-16 rounded-[3rem] border border-white/5 min-h-[350px] flex flex-col justify-center items-center text-center">
+                <div id="faq-container" class="faq-transition opacity-100 transform translate-y-0">
+                    <i class="fas fa-question-circle text-pink-500 text-4xl mb-8"></i>
+                    <h3 id="faq-question" class="text-xl md:text-2xl font-bold mb-6 leading-relaxed"></h3>
+                    <p id="faq-answer" class="text-slate-300 text-sm md:text-base leading-loose max-w-2xl"></p>
+                </div>
+                
+                <!-- Pagination Dots -->
+                <div class="flex space-x-2 mt-12" id="faq-dots"></div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-slate-400 text-xs mb-6">Pertanyaan Anda belum terjawab?</p>
+                <a href="https://wa.me/6282342240701" target="_blank" class="inline-flex items-center space-x-3 bg-white/5 hover:bg-white/10 px-8 py-3 rounded-full transition-all border border-white/10">
+                    <i class="fab fa-whatsapp text-green-400"></i>
+                    <span class="text-xs font-bold tracking-widest">TANYA VIA WHATSAPP</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
-    <footer class="bg-blue-900 text-white py-12 text-center">
-        <p class="text-[10px] uppercase tracking-[0.5em] opacity-50">&copy; 2026 Honey Laundry - Denpasar, Bali.</p>
+    <footer class="bg-slate-950 text-white py-12 text-center">
+        <div class="mb-8">
+            <div class="flex justify-center items-center group mb-4">
+                <img src="https://i.ibb.co.com/ZzmJZ1JB/LOGO-HONEY-LAUNDRY.png" alt="Logo" class="h-6 w-auto mr-2 grayscale brightness-200">
+                <span class="text-md font-bold tracking-tighter">Honey<span class="text-pink-500">Laundry</span></span>
+            </div>
+            <p class="text-slate-500 text-xs max-w-xs mx-auto">Solusi laundry profesional untuk kebutuhan pribadi dan bisnis Anda di Denpasar, Bali.</p>
+        </div>
+        <p class="text-[10px] uppercase tracking-[0.5em] opacity-30">&copy; 2026 Honey Laundry - All Rights Reserved.</p>
     </footer>
 
     <script>
@@ -312,7 +352,7 @@
             villa: { title: "Villa", icon: "fa-home", items: ["Linen Premium", "Handuk Kolam", "Bathrobe", "Sprei King Size", "Sarung Bantal", "Karpet Kecil"] },
             salon: { title: "Salon", icon: "fa-scissors", items: ["Handuk Kecil", "Kain Penutup", "Seragam Kapster", "Handuk Keramas", "Apron", "Keset"] },
             spa: { title: "Spa", icon: "fa-spa", items: ["Handuk Besar", "Kain Batik/Kemben", "Sarung Bantal", "Handuk Muka", "Bed Sheets", "Seragam Staff"] },
-            barber: { title: "Barber", icon: "fa-barcode rotate-90", items: ["Handuk Leher", "Kain Potong", "Apron Barber", "Handuk Hangat", "Seragam", "Keset"] },
+            barber: { title: "Barber", icon: "fa-cut", items: ["Handuk Leher", "Kain Potong", "Apron Barber", "Handuk Hangat", "Seragam", "Keset"] },
             corporate: { title: "Corporate", icon: "fa-building", items: ["Seragam Kantor", "Gorden Ruangan", "Taplak Meja Rapat", "Cover Kursi", "Jaket Kantor", "Flags"] },
             sekolah: { title: "Sekolah", icon: "fa-school", items: ["Seragam Siswa", "Kostum Olahraga", "Gorden Kelas", "Taplak Meja", "Bendera", "Kostum Tari/Seni"] }
         };
@@ -355,24 +395,8 @@
             { name: "Lingerie", price: "20,000" },
             { name: "Rok Pendek", price: "15,000" },
             { name: "Rok Panjang", price: "20,000" },
-            { name: "Kamen / Songket", price: "15,000" },
-            { name: "Udeng", price: "15,000" },
-            { name: "Selendang", price: "10,000" },
-            { name: "Mukena", price: "25,000" },
-            { name: "Hijab", price: "20,000" },
-            { name: "Sajadah", price: "25,000" },
-            { name: "Guling", price: "20,000" },
-            { name: "Bantal Jumbo", price: "30,000" },
-            { name: "Bantal Leher", price: "10,000" },
-            { name: "Bantal Sofa", price: "15,000" },
-            { name: "Bantal Standar", price: "20,000" },
-            { name: "Bed Cover Kecil", price: "20,000" },
-            { name: "Bed Cover Sedang", price: "30,000" },
             { name: "Bed Cover Besar", price: "40,000" },
-            { name: "Selimut Tipis", price: "10,000" },
-            { name: "Selimut Tebal", price: "25,000" },
-            { name: "Sprei", price: "10,000" },
-            { name: "Set Sprei", price: "15,000" }
+            { name: "Sprei", price: "10,000" }
         ];
 
         function renderSatuan(data) {
@@ -383,8 +407,6 @@
                     <td class="px-8 py-5 text-sm text-right text-pink-500 font-black">Rp ${item.price}</td>
                 </tr>
             `).join('');
-            document.getElementById('no-result').classList.toggle('hidden', data.length > 0);
-            document.getElementById('table-satuan').classList.toggle('hidden', data.length === 0);
         }
 
         function searchSatuan() {
@@ -393,10 +415,57 @@
             renderSatuan(filtered);
         }
 
-        // Initial render
         renderSatuan(satuanData);
 
-        // SIDE NAV & REVIEW (Legacy)
+        // FAQ LOGIC
+        const faqList = [
+            { q: "Berapa lama waktu pengerjaan laundry kiloan?", a: "Untuk paket reguler 2-3 hari, paket 1 Day selesai dalam 24 jam, dan paket Express selesai dalam 6-8 jam." },
+            { q: "Apakah ada layanan antar jemput gratis?", a: "Ya, kami melayani antar jemput gratis untuk area Denpasar dengan minimal order tertentu." },
+            { q: "Apakah pakaian saya akan dicampur dengan milik orang lain?", a: "Sama sekali tidak. Kami menggunakan sistem One Machine One Customer untuk menjaga higienitas dan mencegah tertukarnya pakaian." },
+            { q: "Bagaimana jika ada pakaian yang rusak atau hilang?", a: "Kami memiliki prosedur ganti rugi sesuai dengan syarat dan ketentuan yang berlaku, maksimal 5x dari biaya laundry barang tersebut." },
+            { q: "Apa saja jenis layanan B2B yang tersedia?", a: "Kami melayani Hotel, Villa, Spa, Salon, Barber, Sekolah, hingga Corporate dengan harga khusus kontrak." },
+            { q: "Apakah bisa laundry item besar seperti karpet atau boneka?", a: "Bisa. Kami menyediakan layanan laundry satuan untuk item besar dengan peralatan khusus agar bersih maksimal." },
+            { q: "Deterjen apa yang digunakan?", a: "Kami menggunakan deterjen cair ramah lingkungan yang efektif mengangkat noda namun tetap lembut di serat kain." },
+            { q: "Bagaimana cara melakukan pemesanan?", a: "Sangat mudah! Cukup klik tombol 'Pesan Sekarang' untuk terhubung langsung ke WhatsApp admin kami." },
+            { q: "Apakah ada diskon untuk pelanggan setia?", a: "Tentu! Kami memiliki program member dan promo berkala yang diinfokan melalui status WhatsApp dan media sosial kami." },
+            { q: "Jam operasional Honey Laundry jam berapa?", a: "Kami buka setiap hari mulai pukul 08.00 hingga 20.00 WITA." }
+        ];
+
+        let currentFaq = 0;
+        const faqContainer = document.getElementById('faq-container');
+        const qEl = document.getElementById('faq-question');
+        const aEl = document.getElementById('faq-answer');
+        const dotsEl = document.getElementById('faq-dots');
+
+        // Create dots
+        faqList.forEach((_, i) => {
+            const dot = document.createElement('div');
+            dot.className = `h-1 w-4 rounded-full transition-all duration-300 ${i === 0 ? 'bg-pink-500 w-8' : 'bg-white/20'}`;
+            dotsEl.appendChild(dot);
+        });
+
+        function updateFaq() {
+            faqContainer.classList.add('opacity-0', 'translate-y-4');
+            
+            setTimeout(() => {
+                const item = faqList[currentFaq];
+                qEl.textContent = item.q;
+                aEl.textContent = item.a;
+                
+                // Update dots
+                Array.from(dotsEl.children).forEach((dot, i) => {
+                    dot.className = `h-1 rounded-full transition-all duration-300 ${i === currentFaq ? 'bg-pink-500 w-8' : 'bg-white/20 w-4'}`;
+                });
+
+                faqContainer.classList.remove('opacity-0', 'translate-y-4');
+                currentFaq = (currentFaq + 1) % faqList.length;
+            }, 500);
+        }
+
+        updateFaq();
+        setInterval(updateFaq, 6000);
+
+        // SIDE NAV & REVIEW
         const burgerBtn = document.getElementById('burger-menu-btn');
         const sideNav = document.getElementById('side-nav');
         const overlay = document.getElementById('side-nav-overlay');
