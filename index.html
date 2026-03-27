@@ -1,301 +1,443 @@
-<!doctype html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Honey Laundry Bali | Premium Smart Laundry</title>
-    <link rel="stylesheet" href="style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <header>
-      <nav class="container">
-        <div class="logo-container">
-          <img
-            src="https://i.ibb.co.com/TxqN97H0/LOGO-HONEY-LAUNDRY.png"
-            alt="Logo Honey Laundry"
-            class="site-logo"
-          />
-          <div class="logo-text">HONEY<span>LAUNDRY</span></div>
-        </div>
-        <ul class="nav-links">
-          <li><a href="#beranda">Beranda</a></li>
-          <li><a href="#layanan">Layanan</a></li>
-          <li><a href="#kalkulator">Estimator</a></li>
-          <li><a href="#harga">Harga</a></li>
-          <li>
-            <a href="https://wa.me/6282342240701" class="btn-nav">Order WA</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honey Laundry - Kesegaran Setiap Hari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e3a8a;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ec4899;
+        }
 
-    <section id="beranda" class="hero">
-      <div class="container reveal">
-        <span class="badge">Gratis Antar Jemput Denpasar Timur</span>
-        <h1>
-          Cucian Bersih,<br /><span class="text-gradient">Tanpa Ribet.</span>
-        </h1>
-        <p>
-          Laundry premium dengan transparansi harga melalui Smart Estimator.
-        </p>
-        <div class="hero-btns">
-          <a href="#kalkulator" class="btn-main">Mulai Hitung Biaya</a>
-          <a href="#harga" class="btn-secondary">Lihat Daftar Harga</a>
-        </div>
-      </div>
-    </section>
+        /* Side Nav Animation */
+        #side-nav {
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
 
-    <section id="layanan" class="container section">
-      <div class="text-center reveal">
-        <h2 class="section-title">Layanan Unggulan</h2>
-        <p class="section-desc">
-          Solusi lengkap untuk segala jenis kebutuhan kain Anda.
-        </p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card reveal">
-          <div class="icon-box"><i class="fas fa-tshirt"></i></div>
-          <h3>Cuci Satuan</h3>
-          <p>
-            Treatment khusus untuk Jas, Gaun, Jaket, dan Perlengkapan Tidur
-            Anda.
-          </p>
-        </div>
-        <div class="service-card reveal">
-          <div class="icon-box"><i class="fas fa-boxes"></i></div>
-          <h3>Cuci Kiloan</h3>
-          <p>
-            Opsi hemat mulai dari Cuci Lipat hingga Cuci Setrika Express 6 jam.
-          </p>
-        </div>
-        <div class="service-card reveal">
-          <div class="icon-box"><i class="fas fa-motorcycle"></i></div>
-          <h3>Antar Jemput</h3>
-          <p>Gratis layanan jemput dan antar untuk radius 2km (Min. 3kg).</p>
-        </div>
-      </div>
-    </section>
+        /* Marquee Animation for Reviews */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            display: flex;
+            width: max-content;
+            animation: marquee 40s linear infinite;
+        }
+        .marquee-container:hover {
+            animation-play-state: paused;
+        }
 
-    <section id="kalkulator" class="container section">
-      <div class="calc-card reveal">
-        <div class="calc-header">
-          <h2><i class="fas fa-magic"></i> Smart Estimator</h2>
-          <p>Hitung estimasi biaya laundry Anda secara instan.</p>
-        </div>
-        <div class="calc-body">
-          <div class="calc-grid">
-            <div class="calc-left">
-              <div class="input-card">
-                <label>Layanan Kiloan</label>
-                <div class="flex-input">
-                  <input
-                    type="number"
-                    id="inputKg"
-                    placeholder="Berat (Kg)"
-                    min="0"
-                  />
-                  <select id="selectLayanan">
-                    <option value="0">Pilih Jenis Layanan...</option>
-                    <optgroup label="Cuci Setrika">
-                      <option value="7000">Cuci Setrika - Reguler (7k)</option>
-                      <option value="10000">
-                        Cuci Setrika - One Day (10k)
-                      </option>
-                      <option value="15000">
-                        Cuci Setrika - Express (15k)
-                      </option>
-                    </optgroup>
-                    <optgroup label="Cuci Lipat">
-                      <option value="5000">Cuci Lipat - Reguler (5k)</option>
-                      <option value="7000">Cuci Lipat - One Day (7k)</option>
-                      <option value="9000">Cuci Lipat - Express (9k)</option>
-                    </optgroup>
-                    <optgroup label="Setrika Saja">
-                      <option value="5000">Setrika - Reguler (5k)</option>
-                      <option value="7000">Setrika - One Day (7k)</option>
-                      <option value="9000">Setrika - Express (9k)</option>
-                    </optgroup>
-                  </select>
+        /* Scroll-triggered Marquee Styles */
+        .scroll-marquee-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            background-color: #1e3a8a;
+            padding: 2rem 0;
+            display: flex;
+            align-items: center;
+        }
+        .scroll-marquee-content {
+            display: inline-block;
+            font-size: 4rem;
+            font-weight: 900;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            will-change: transform;
+            transition: transform 0.1s linear;
+        }
+
+        /* B2B Detail Animation */
+        #b2b-detail-content {
+            transition: all 0.4s ease-out;
+        }
+
+        /* Table Responsive Styles */
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans overflow-x-hidden">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed w-full z-50 nav-glass border-b border-slate-100/50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center group cursor-pointer">
+                    <img src="https://i.ibb.co.com/ZzmJZ1JB/LOGO-HONEY-LAUNDRY.png" alt="Logo Honey Laundry" class="h-8 w-auto mr-2 transition-transform group-hover:scale-105">
+                    <span class="text-lg font-bold text-blue-900 tracking-tight">Honey<span class="text-pink-500">Laundry</span></span>
                 </div>
-              </div>
-
-              <div class="input-card">
-                <label>Tambah Item Satuan</label>
-                <div class="search-wrapper">
-                  <div class="flex-input">
-                    <div style="position: relative; flex: 1">
-                      <input
-                        type="text"
-                        id="inputCariSatuan"
-                        placeholder="Ketik: Jas, Bed Cover, Sprei..."
-                        oninput="filterDropdownSatuan()"
-                        autocomplete="off"
-                      />
-                      <div
-                        id="dropdownRekomendasi"
-                        class="custom-dropdown"
-                      ></div>
+                
+                <button id="burger-menu-btn" class="group flex items-center justify-center w-10 h-10 rounded-full hover:bg-slate-100 transition-colors z-[60] relative">
+                    <div id="burger-icon" class="text-blue-900 flex flex-col items-end space-y-1.5">
+                        <span class="block w-6 h-0.5 bg-blue-900 transition-all"></span>
+                        <span class="block w-4 h-0.5 bg-blue-900 transition-all"></span>
+                        <span class="block w-5 h-0.5 bg-blue-900 transition-all"></span>
                     </div>
-                    <button onclick="tambahItemManual()" class="btn-add">
-                      Tambah
-                    </button>
-                  </div>
-                </div>
-                <ul id="listSatuan" class="cart-list"></ul>
-              </div>
-
-              <div class="input-card">
-                <label>Jarak (KM)</label>
-                <div class="flex-input">
-                  <input
-                    type="number"
-                    id="inputJarak"
-                    placeholder="0.0"
-                    step="0.1"
-                  />
-                  <button onclick="getLokasiPelanggan()" class="btn-gps">
-                    <i class="fas fa-location-arrow"></i> GPS
-                  </button>
-                </div>
-                <p id="statusLokasi" class="status-gps"></p>
-              </div>
-            </div>
-
-            <div class="calc-right">
-              <div class="result-box">
-                <h3>Rincian Biaya</h3>
-                <div class="res-item">
-                  <span>Total Kiloan</span><span id="resKiloan">Rp 0</span>
-                </div>
-                <div class="res-item">
-                  <span>Total Satuan</span><span id="resSatuan">Rp 0</span>
-                </div>
-                <div class="res-item">
-                  <span>Ongkir</span><span id="resOngkir">Rp 0</span>
-                </div>
-                <div class="res-total">
-                  <p>ESTIMASI TOTAL</p>
-                  <h2 id="grandTotal">Rp 0</h2>
-                </div>
-                <button class="btn-order" onclick="pesanWA()">
-                  <i class="fab fa-whatsapp"></i> Pesan Sekarang
                 </button>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
+    </nav>
+
+    <!-- Side Menu -->
+    <div id="side-nav-overlay" class="fixed inset-0 bg-blue-950/20 z-[55] opacity-0 pointer-events-none backdrop-blur-sm transition-opacity duration-500"></div>
+    <div id="side-nav" class="fixed top-0 right-0 h-full w-[300px] bg-white z-[58] shadow-[-20px_0_60px_-15px_rgba(0,0,0,0.1)] transform translate-x-full flex flex-col">
+        <div class="p-10 pt-28 space-y-10 flex-1">
+            <nav class="flex flex-col space-y-5">
+                <a href="#home" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Beranda</a>
+                <a href="#unggulan" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Keunggulan</a>
+                <a href="#b2b" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Layanan B2B</a>
+                <a href="#pricelist" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Daftar Harga</a>
+                <a href="#review" class="nav-link text-2xl font-light text-slate-400 hover:text-blue-900 transition-all duration-300">Review</a>
+            </nav>
+        </div>
+        <div class="p-10 bg-slate-50 text-xs font-bold text-slate-400">0823 4224 0701</div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen w-full overflow-hidden">
+        <img src="https://i.ibb.co.com/nM379Xv0/Gemini-Generated-Image-j0emfwj0emfwj0em.png" alt="Honey Laundry Hero" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="absolute bottom-12 left-1/2 -translate-x-1/2 z-10">
+            <a href="https://wa.me/6282342240701" target="_blank" class="bg-pink-500 hover:bg-pink-600 text-white px-10 py-4 rounded-full text-xs font-bold tracking-[0.2em] transition transform hover:scale-110 shadow-2xl uppercase inline-block">
+                Pesan Sekarang
+            </a>
+        </div>
     </section>
 
-    <section id="harga" class="container section">
-      <div class="text-center reveal">
-        <h2 class="section-title">Pricelist Lengkap</h2>
-      </div>
-
-      <div class="price-tables-grid reveal">
-        <div class="price-table-card">
-          <h3>Laundry Kiloan</h3>
-          <div class="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Layanan</th>
-                  <th>Reguler</th>
-                  <th>1 Day</th>
-                  <th>Express</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Cuci Setrika</td>
-                  <td>7.000</td>
-                  <td>10.000</td>
-                  <td>15.000</td>
-                </tr>
-                <tr>
-                  <td>Cuci Lipat</td>
-                  <td>5.000</td>
-                  <td>7.000</td>
-                  <td>9.000</td>
-                </tr>
-                <tr>
-                  <td>Setrika</td>
-                  <td>5.000</td>
-                  <td>7.000</td>
-                  <td>9.000</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+    <!-- Running Text Section -->
+    <section class="scroll-marquee-wrapper border-y-8 border-white">
+        <div class="scroll-marquee-content" id="scroll-marquee">
+            HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY — HONEY LAUNDRY —
         </div>
-
-        <div class="price-table-card">
-          <h3>Laundry Satuan</h3>
-          <div class="search-mini">
-            <i class="fas fa-search"></i>
-            <input
-              type="text"
-              id="searchPricelist"
-              placeholder="Cari barang..."
-              onkeyup="filterTabelHarga()"
-            />
-          </div>
-          <div
-            class="table-container"
-            style="max-height: 350px; overflow-y: auto"
-          >
-            <table id="tableSatuan">
-              <thead>
-                <tr>
-                  <th>Nama Barang</th>
-                  <th>Harga</th>
-                </tr>
-              </thead>
-              <tbody id="bodySatuan"></tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </section>
 
-    <section id="faq" class="container section">
-      <h2 class="section-title text-center reveal">FAQ</h2>
-      <div class="faq-grid reveal">
-        <div class="faq-item">
-          <h4>Berapa minimal order antar-jemput?</h4>
-          <p>
-            Minimal 3kg untuk gratis antar-jemput radius 2km. Dibawah itu
-            dikenakan biaya ongkir standar.
-          </p>
+    <!-- Section Keunggulan -->
+    <section id="unggulan" class="relative py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-3xl font-bold text-blue-900">Mengapa Honey Laundry?</h2>
+                <div class="h-1 w-12 bg-pink-500 mx-auto mt-4"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-10 bg-slate-50 rounded-3xl hover:shadow-xl transition-all">
+                    <i class="fas fa-certificate text-pink-500 text-2xl mb-6"></i>
+                    <h3 class="font-bold text-blue-900 mb-4">Kualitas Terjamin</h3>
+                    <p class="text-sm text-slate-500">Pakaian bersih, wangi, dan rapi sesuai standar hotel berbintang.</p>
+                </div>
+                <div class="p-10 bg-slate-50 rounded-3xl hover:shadow-xl transition-all">
+                    <i class="fas fa-truck text-pink-500 text-2xl mb-6"></i>
+                    <h3 class="font-bold text-blue-900 mb-4">Antar Jemput</h3>
+                    <p class="text-sm text-slate-500">Layanan jemput antar area Denpasar, memudahkan hari-hari sibuk Anda.</p>
+                </div>
+                <div class="p-10 bg-slate-50 rounded-3xl hover:shadow-xl transition-all">
+                    <i class="fas fa-leaf text-pink-500 text-2xl mb-6"></i>
+                    <h3 class="font-bold text-blue-900 mb-4">Ramah Lingkungan</h3>
+                    <p class="text-sm text-slate-500">Menggunakan bahan kimia pilihan yang aman bagi kain dan kulit.</p>
+                </div>
+            </div>
         </div>
-        <div class="faq-item">
-          <h4>Berapa lama pengerjaan Express?</h4>
-          <p>
-            Layanan Express kami selesai dalam waktu maksimal 6 jam sejak
-            pakaian diterima.
-          </p>
-        </div>
-      </div>
     </section>
 
-    <footer>
-      <div class="container">
-        <div class="logo-text" style="color: white; margin-bottom: 15px">
-          HONEY<span>LAUNDRY</span>
+    <!-- Section B2B (Solusi Bisnis) -->
+    <section id="b2b" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-blue-900 mb-4">Solusi Bisnis B2B</h2>
+                <p class="text-slate-500 text-sm">Pilih kategori bisnis Anda untuk melihat layanan kami</p>
+            </div>
+            
+            <!-- Grid Kategori -->
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 mb-12">
+                <button onclick="showB2B('hotel')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
+                    <i class="fas fa-hotel text-blue-900 group-hover:text-pink-500 mb-3 text-lg"></i>
+                    <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Hotel</span>
+                </button>
+                <button onclick="showB2B('villa')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
+                    <i class="fas fa-home text-blue-900 group-hover:text-pink-500 mb-3 text-lg"></i>
+                    <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Villa</span>
+                </button>
+                <button onclick="showB2B('salon')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
+                    <i class="fas fa-scissors text-blue-900 group-hover:text-pink-500 mb-3 text-lg"></i>
+                    <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Salon</span>
+                </button>
+                <button onclick="showB2B('spa')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
+                    <i class="fas fa-spa text-blue-900 group-hover:text-pink-500 mb-3 text-lg"></i>
+                    <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Spa</span>
+                </button>
+                <button onclick="showB2B('barber')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
+                    <!-- Fixed Barber Pole Icon -->
+                    <i class="fas fa-barcode text-blue-900 group-hover:text-pink-500 mb-3 text-lg rotate-90"></i>
+                    <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Barber</span>
+                </button>
+                <button onclick="showB2B('corporate')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
+                    <i class="fas fa-building text-blue-900 group-hover:text-pink-500 mb-3 text-lg"></i>
+                    <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Corporate</span>
+                </button>
+                <button onclick="showB2B('sekolah')" class="b2b-btn bg-white p-6 rounded-3xl shadow-sm border border-slate-100 transition-all hover:shadow-lg hover:-translate-y-1 flex flex-col items-center group">
+                    <i class="fas fa-school text-blue-900 group-hover:text-pink-500 mb-3 text-lg"></i>
+                    <span class="uppercase tracking-widest font-bold text-[10px] text-blue-900">Sekolah</span>
+                </button>
+            </div>
+
+            <!-- Detail Display -->
+            <div id="b2b-detail" class="hidden bg-white p-8 md:p-12 rounded-[2.5rem] shadow-xl border border-slate-100 max-w-3xl mx-auto transform transition-all duration-500 opacity-0 translate-y-4">
+                <div class="flex items-center justify-between mb-8">
+                    <h3 id="b2b-title" class="text-xl font-bold text-blue-900 uppercase tracking-widest">Detail Layanan</h3>
+                    <div class="h-0.5 flex-1 bg-slate-100 mx-6"></div>
+                    <i id="b2b-icon" class="text-pink-500 text-2xl"></i>
+                </div>
+                <div id="b2b-items" class="grid grid-cols-2 md:grid-cols-3 gap-4"></div>
+            </div>
         </div>
-        <p>Jl. Letda Reta No.25, Denpasar Timur</p>
-        <p>© 2026 Honey Laundry Bali. Bersih, Harum, Rapi.</p>
-      </div>
+    </section>
+
+    <!-- Section Pricelist (Kiloan & Satuan) -->
+    <section id="pricelist" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-6">
+            <h2 class="text-3xl font-bold text-blue-900 text-center mb-16 italic">Pricelist Honey Laundry</h2>
+            
+            <!-- Pricelist Kiloan -->
+            <div class="mb-24">
+                <h3 class="text-lg font-bold text-blue-900 mb-8 border-l-4 border-pink-500 pl-4 uppercase tracking-widest">Paket Kiloan</h3>
+                <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-slate-100 table-container">
+                    <table class="w-full text-left min-w-[600px]">
+                        <thead class="bg-blue-900 text-white text-xs uppercase tracking-widest">
+                            <tr>
+                                <th class="px-8 py-6">Layanan</th>
+                                <th class="px-8 py-6 text-center">Reguler</th>
+                                <th class="px-8 py-6 text-center">1 Day</th>
+                                <th class="px-8 py-6 text-center bg-pink-500">Express</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-8 py-6 font-bold text-blue-900">Cuci Setrika</td>
+                                <td class="px-8 py-6 text-center">7.000</td>
+                                <td class="px-8 py-6 text-center italic">10.000</td>
+                                <td class="px-8 py-6 text-center font-black text-pink-500">15.000</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-8 py-6 font-bold text-blue-900">Cuci Lipat</td>
+                                <td class="px-8 py-6 text-center">5.000</td>
+                                <td class="px-8 py-6 text-center italic">7.000</td>
+                                <td class="px-8 py-6 text-center font-black text-pink-500">9.000</td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition">
+                                <td class="px-8 py-6 font-bold text-blue-900">Setrika</td>
+                                <td class="px-8 py-6 text-center">5.000</td>
+                                <td class="px-8 py-6 text-center italic">7.000</td>
+                                <td class="px-8 py-6 text-center font-black text-pink-500">9.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="mt-4 text-[10px] text-slate-400 text-center uppercase tracking-widest">* Harga di atas adalah harga per Kilogram (Kg)</p>
+            </div>
+
+            <!-- Pricelist Satuan with Search -->
+            <div>
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+                    <h3 class="text-lg font-bold text-blue-900 border-l-4 border-pink-500 pl-4 uppercase tracking-widest">Layanan Satuan</h3>
+                    <div class="relative w-full md:w-72">
+                        <input type="text" id="search-satuan" onkeyup="searchSatuan()" placeholder="Cari pakaian..." class="w-full bg-slate-50 border border-slate-200 rounded-full px-12 py-3 text-xs focus:outline-none focus:ring-2 focus:ring-pink-500 transition-all shadow-sm">
+                        <i class="fas fa-search absolute left-5 top-1/2 -translate-y-1/2 text-slate-300 text-xs"></i>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] shadow-xl overflow-hidden border border-slate-100 table-container">
+                    <table class="w-full text-left" id="table-satuan">
+                        <thead class="bg-slate-50 text-blue-900 text-[10px] uppercase tracking-[0.2em] font-black">
+                            <tr>
+                                <th class="px-8 py-5 border-b border-slate-100">Nama Barang</th>
+                                <th class="px-8 py-5 border-b border-slate-100 text-right">Harga Satuan</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50" id="body-satuan">
+                            <!-- Injected by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div id="no-result" class="hidden py-20 text-center text-slate-400 text-sm">Barang tidak ditemukan.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Reviews -->
+    <section id="review" class="py-24 bg-slate-50 overflow-hidden">
+        <h2 class="text-3xl font-bold text-blue-900 text-center mb-16">Ulasan Pelanggan</h2>
+        <div class="marquee-container" id="review-marquee"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-blue-900 text-white py-12 text-center">
+        <p class="text-[10px] uppercase tracking-[0.5em] opacity-50">&copy; 2026 Honey Laundry - Denpasar, Bali.</p>
     </footer>
 
-    <script src="script.js"></script>
-  </body>
+    <script>
+        // SCROLL MARQUEE LOGIC
+        const scrollMarquee = document.getElementById('scroll-marquee');
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            if (scrollPos > 50) {
+                scrollMarquee.style.transform = `translateX(-${(scrollPos - 50) * 0.4}px)`;
+            }
+        });
+
+        // B2B DATA
+        const b2bData = {
+            hotel: { title: "Hotel", icon: "fa-hotel", items: ["Sprei & Bedcover", "Handuk Mandi", "Seragam Karyawan", "Keset Kamar", "Gorden Kamar", "Table Cloth"] },
+            villa: { title: "Villa", icon: "fa-home", items: ["Linen Premium", "Handuk Kolam", "Bathrobe", "Sprei King Size", "Sarung Bantal", "Karpet Kecil"] },
+            salon: { title: "Salon", icon: "fa-scissors", items: ["Handuk Kecil", "Kain Penutup", "Seragam Kapster", "Handuk Keramas", "Apron", "Keset"] },
+            spa: { title: "Spa", icon: "fa-spa", items: ["Handuk Besar", "Kain Batik/Kemben", "Sarung Bantal", "Handuk Muka", "Bed Sheets", "Seragam Staff"] },
+            barber: { title: "Barber", icon: "fa-barcode rotate-90", items: ["Handuk Leher", "Kain Potong", "Apron Barber", "Handuk Hangat", "Seragam", "Keset"] },
+            corporate: { title: "Corporate", icon: "fa-building", items: ["Seragam Kantor", "Gorden Ruangan", "Taplak Meja Rapat", "Cover Kursi", "Jaket Kantor", "Flags"] },
+            sekolah: { title: "Sekolah", icon: "fa-school", items: ["Seragam Siswa", "Kostum Olahraga", "Gorden Kelas", "Taplak Meja", "Bendera", "Kostum Tari/Seni"] }
+        };
+
+        function showB2B(key) {
+            const detailBox = document.getElementById('b2b-detail');
+            const titleEl = document.getElementById('b2b-title');
+            const iconEl = document.getElementById('b2b-icon');
+            const itemsEl = document.getElementById('b2b-items');
+            const data = b2bData[key];
+            detailBox.classList.add('opacity-0', 'translate-y-4');
+            setTimeout(() => {
+                detailBox.classList.remove('hidden');
+                titleEl.textContent = "Layanan Untuk " + data.title;
+                iconEl.className = "fas " + data.icon + " text-pink-500 text-2xl";
+                itemsEl.innerHTML = data.items.map(item => `
+                    <div class="flex items-center space-x-3 p-3 bg-slate-50 rounded-2xl border border-slate-100">
+                        <i class="fas fa-check-circle text-blue-900 text-[10px]"></i>
+                        <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider">${item}</span>
+                    </div>
+                `).join('');
+                requestAnimationFrame(() => detailBox.classList.remove('opacity-0', 'translate-y-4'));
+            }, 200);
+        }
+
+        // SATUAN PRICELIST LOGIC
+        const satuanData = [
+            { name: "Jaket Kulit", price: "50,000" },
+            { name: "Jas Pria/Wanita", price: "35,000" },
+            { name: "Jas Set", price: "65,000" },
+            { name: "Jaket Non Kulit", price: "25,000" },
+            { name: "Kaos T-Shirt", price: "15,000" },
+            { name: "Kebaya", price: "15,000" },
+            { name: "Kemeja Batik", price: "25,000" },
+            { name: "Kemeja", price: "20,000" },
+            { name: "Polo", price: "20,000" },
+            { name: "Bra", price: "10,000" },
+            { name: "Celana Pendek", price: "15,000" },
+            { name: "Celana Panjang", price: "20,000" },
+            { name: "Lingerie", price: "20,000" },
+            { name: "Rok Pendek", price: "15,000" },
+            { name: "Rok Panjang", price: "20,000" },
+            { name: "Kamen / Songket", price: "15,000" },
+            { name: "Udeng", price: "15,000" },
+            { name: "Selendang", price: "10,000" },
+            { name: "Mukena", price: "25,000" },
+            { name: "Hijab", price: "20,000" },
+            { name: "Sajadah", price: "25,000" },
+            { name: "Guling", price: "20,000" },
+            { name: "Bantal Jumbo", price: "30,000" },
+            { name: "Bantal Leher", price: "10,000" },
+            { name: "Bantal Sofa", price: "15,000" },
+            { name: "Bantal Standar", price: "20,000" },
+            { name: "Bed Cover Kecil", price: "20,000" },
+            { name: "Bed Cover Sedang", price: "30,000" },
+            { name: "Bed Cover Besar", price: "40,000" },
+            { name: "Selimut Tipis", price: "10,000" },
+            { name: "Selimut Tebal", price: "25,000" },
+            { name: "Sprei", price: "10,000" },
+            { name: "Set Sprei", price: "15,000" }
+        ];
+
+        function renderSatuan(data) {
+            const body = document.getElementById('body-satuan');
+            body.innerHTML = data.map(item => `
+                <tr class="hover:bg-slate-50 transition">
+                    <td class="px-8 py-5 text-sm font-bold text-blue-900 uppercase tracking-wide">${item.name}</td>
+                    <td class="px-8 py-5 text-sm text-right text-pink-500 font-black">Rp ${item.price}</td>
+                </tr>
+            `).join('');
+            document.getElementById('no-result').classList.toggle('hidden', data.length > 0);
+            document.getElementById('table-satuan').classList.toggle('hidden', data.length === 0);
+        }
+
+        function searchSatuan() {
+            const query = document.getElementById('search-satuan').value.toLowerCase();
+            const filtered = satuanData.filter(item => item.name.toLowerCase().includes(query));
+            renderSatuan(filtered);
+        }
+
+        // Initial render
+        renderSatuan(satuanData);
+
+        // SIDE NAV & REVIEW (Legacy)
+        const burgerBtn = document.getElementById('burger-menu-btn');
+        const sideNav = document.getElementById('side-nav');
+        const overlay = document.getElementById('side-nav-overlay');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const lines = document.getElementById('burger-icon').querySelectorAll('span');
+
+        function toggleNav() {
+            sideNav.classList.toggle('translate-x-full');
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+            lines[0].classList.toggle('rotate-45');
+            lines[0].classList.toggle('translate-y-2');
+            lines[1].classList.toggle('opacity-0');
+            lines[2].classList.toggle('-rotate-45');
+            lines[2].classList.toggle('-translate-y-2');
+        }
+
+        burgerBtn.addEventListener('click', toggleNav);
+        overlay.addEventListener('click', toggleNav);
+        navLinks.forEach(l => l.addEventListener('click', toggleNav));
+
+        const reviews = [
+            { name: "Siska", msg: "Wangi banget dan rapi setrikanya!" },
+            { name: "Agus", msg: "Antar jemputnya on time, mantap." },
+            { name: "Luh Gede", msg: "Layanan express paling oke di Denpasar." },
+            { name: "Ketut", msg: "Bersih total, noda di kerah hilang." },
+            { name: "Wayan", msg: "Harga terjangkau untuk kualitas premium." }
+        ];
+
+        const marqueeReview = document.getElementById('review-marquee');
+        const reviewCards = reviews.map(r => `
+            <div class="bg-white p-8 mx-4 rounded-3xl w-[300px] shadow-sm border border-slate-100 flex-shrink-0">
+                <div class="flex text-pink-500 mb-4 text-xs">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="text-sm text-slate-600 mb-4 italic">"${r.msg}"</p>
+                <div class="text-xs font-bold text-blue-900">${r.name}</div>
+            </div>
+        `).join('');
+
+        marqueeReview.innerHTML = reviewCards + reviewCards;
+    </script>
+</body>
 </html>
