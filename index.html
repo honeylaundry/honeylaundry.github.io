@@ -379,13 +379,10 @@
 
         function showNavbar() {
             mainNav.classList.remove('nav-hidden');
-            // Reset timer: navbar will hide after 3 seconds of inactivity
             clearTimeout(navbarTimer);
             
-            // Only auto-hide if side menu is NOT open
             if (sideNav.classList.contains('translate-x-full')) {
                 navbarTimer = setTimeout(() => {
-                    // Don't hide if we are at the very top of the page
                     if (window.scrollY > 100) {
                         mainNav.classList.add('nav-hidden');
                     }
@@ -397,7 +394,6 @@
             showNavbar();
         });
 
-        // Ensure navbar is visible on hover/mousemove as well
         window.addEventListener('mousemove', (e) => {
             if (e.clientY < 80) showNavbar();
         });
@@ -471,7 +467,7 @@
             }, 200);
         }
 
-        // SATUAN PRICELIST LOGIC
+        // SATUAN PRICELIST LOGIC (Updated with full data)
         const satuanData = [
             { name: "Jaket Kulit", price: "50,000" },
             { name: "Jas Pria/Wanita", price: "35,000" },
@@ -488,18 +484,42 @@
             { name: "Lingerie", price: "20,000" },
             { name: "Rok Pendek", price: "15,000" },
             { name: "Rok Panjang", price: "20,000" },
+            { name: "Kamen / Songket", price: "15,000" },
+            { name: "Udeng", price: "15,000" },
+            { name: "Selendang", price: "10,000" },
+            { name: "Mukena", price: "25,000" },
+            { name: "Hijab", price: "20,000" },
+            { name: "Sajadah", price: "25,000" },
+            { name: "Guling", price: "20,000" },
+            { name: "Bantal Jumbo", price: "30,000" },
+            { name: "Bantal Leher", price: "10,000" },
+            { name: "Bantal Sofa", price: "15,000" },
+            { name: "Bantal Standar", price: "20,000" },
+            { name: "Bed Cover Kecil", price: "20,000" },
+            { name: "Bed Cover Sedang", price: "30,000" },
             { name: "Bed Cover Besar", price: "40,000" },
-            { name: "Sprei", price: "10,000" }
+            { name: "Selimut Tipis", price: "10,000" },
+            { name: "Selimut Tebal", price: "25,000" },
+            { name: "Sprei", price: "10,000" },
+            { name: "Set Sprei", price: "15,000" }
         ];
 
         function renderSatuan(data) {
             const body = document.getElementById('body-satuan');
-            body.innerHTML = data.map(item => `
-                <tr class="hover:bg-slate-50 transition">
-                    <td class="px-8 py-5 text-sm font-bold text-blue-900 uppercase tracking-wide">${item.name}</td>
-                    <td class="px-8 py-5 text-sm text-right text-pink-500 font-black">Rp ${item.price}</td>
-                </tr>
-            `).join('');
+            const noResult = document.getElementById('no-result');
+            
+            if (data.length === 0) {
+                body.innerHTML = '';
+                noResult.classList.remove('hidden');
+            } else {
+                noResult.classList.add('hidden');
+                body.innerHTML = data.map(item => `
+                    <tr class="hover:bg-slate-50 transition">
+                        <td class="px-8 py-5 text-sm font-bold text-blue-900 uppercase tracking-wide">${item.name}</td>
+                        <td class="px-8 py-5 text-sm text-right text-pink-500 font-black">Rp ${item.price}</td>
+                    </tr>
+                `).join('');
+            }
         }
 
         function searchSatuan() {
@@ -515,13 +535,7 @@
             { q: "Berapa lama waktu pengerjaan laundry kiloan?", a: "Untuk paket reguler 2-3 hari, paket 1 Day selesai dalam 24 jam, dan paket Express selesai dalam 6-8 jam." },
             { q: "Apakah ada layanan antar jemput gratis?", a: "Ya, kami melayani antar jemput gratis untuk area Denpasar dengan minimal order tertentu." },
             { q: "Apakah pakaian saya akan dicampur dengan milik orang lain?", a: "Sama sekali tidak. Kami menggunakan sistem One Machine One Customer untuk menjaga higienitas dan mencegah tertukarnya pakaian." },
-            { q: "Bagaimana jika ada pakaian yang rusak atau hilang?", a: "Kami memiliki prosedur ganti rugi sesuai dengan syarat dan ketentuan yang berlaku, maksimal 5x dari biaya laundry barang tersebut." },
-            { q: "Apa saja jenis layanan B2B yang tersedia?", a: "Kami melayani Hotel, Villa, Spa, Salon, Barber, Sekolah, hingga Corporate dengan harga khusus kontrak." },
-            { q: "Apakah bisa laundry item besar seperti karpet atau boneka?", a: "Bisa. Kami menyediakan layanan laundry satuan untuk item besar dengan peralatan khusus agar bersih maksimal." },
-            { q: "Deterjen apa yang digunakan?", a: "Kami menggunakan deterjen cair ramah lingkungan yang efektif mengangkat noda namun tetap lembut di serat kain." },
-            { q: "Bagaimana cara melakukan pemesanan?", a: "Sangat mudah! Cukup klik tombol 'Pesan Sekarang' untuk terhubung langsung ke WhatsApp admin kami." },
-            { q: "Apakah ada diskon untuk pelanggan setia?", a: "Tentu! Kami memiliki program member dan promo berkala yang diinfokan melalui status WhatsApp dan media sosial kami." },
-            { q: "Jam operasional Honey Laundry jam berapa?", a: "Kami buka setiap hari mulai pukul 08.00 hingga 20.00 WITA." }
+            { q: "Bagaimana jika ada pakaian yang rusak atau hilang?", a: "Kami memiliki prosedur ganti rugi sesuai dengan syarat dan ketentuan yang berlaku, maksimal 5x dari biaya laundry barang tersebut." }
         ];
 
         let currentFaq = 0;
@@ -569,12 +583,11 @@
             lines[2].classList.toggle('-rotate-45');
             lines[2].classList.toggle('-translate-y-2');
             
-            // If opening the menu, make sure navbar stays visible
             if (!sideNav.classList.contains('translate-x-full')) {
                 clearTimeout(navbarTimer);
                 mainNav.classList.remove('nav-hidden');
             } else {
-                showNavbar(); // Trigger normal auto-hide logic when closing
+                showNavbar();
             }
         }
 
@@ -586,8 +599,7 @@
             { name: "Siska", msg: "Wangi banget dan rapi setrikanya!" },
             { name: "Agus", msg: "Antar jemputnya on time, mantap." },
             { name: "Luh Gede", msg: "Layanan express paling oke di Denpasar." },
-            { name: "Ketut", msg: "Bersih total, noda di kerah hilang." },
-            { name: "Wayan", msg: "Harga terjangkau untuk kualitas premium." }
+            { name: "Ketut", msg: "Bersih total, noda di kerah hilang." }
         ];
 
         const marqueeReview = document.getElementById('review-marquee');
